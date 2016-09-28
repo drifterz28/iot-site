@@ -1,9 +1,9 @@
-const http         = require('http'),
-      fs           = require('fs'),
-      path         = require('path'),
-      contentTypes = require('./utils/content-types'),
-      sysInfo      = require('./utils/sys-info'),
-      env          = process.env;
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const contentTypes = require('./utils/content-types');
+const sysInfo = require('./utils/sys-info');
+const env = process.env;
 
 let server = http.createServer(function (req, res) {
   let url = req.url;

@@ -1,9 +1,9 @@
-const cluster = require('cluster'),
-      stopSignals = [
-        'SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
-        'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'
-      ],
-      production = process.env.NODE_ENV == 'production';
+const cluster = require('cluster');
+const stopSignals = [
+  'SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
+  'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'
+];
+const production = process.env.NODE_ENV == 'production';
 
 let stopping = false;
 
@@ -23,7 +23,7 @@ if (cluster.isMaster) {
   for (let i = 0; i < workerCount; i++) {
     cluster.fork();
   }
-  if (production) {
+  if(production) {
     stopSignals.forEach(function (signal) {
       process.on(signal, function () {
         console.log(`Got ${signal}, stopping workers...`);
