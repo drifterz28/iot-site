@@ -8,6 +8,12 @@ const app = express();
 const skiConditions = require('./app/ski-conditions');
 const kegBot = require('./app/kegbot');
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use(express.static('static'));
 
 app.get('/health', function(req, res) {
