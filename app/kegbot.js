@@ -16,6 +16,9 @@ module.exports = (req, res) => {
       if(query.maxValue) {
         json[query.keg].maxValue = query.maxValue;
       }
+      if(query.gallons) {
+        json[query.keg].gallons = query.gallons;
+      }
       fs.writeFileSync('kegs.json', JSON.stringify(json), 'utf8');
     }
     // read values from saved file to confirm save

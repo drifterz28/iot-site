@@ -1,1 +1,1 @@
-{"kegOne":{"maxValue":0,"name":"hello"},"kegTwo":{"maxValue":0,"name":"hello"}}
+{"kegOne":{"maxValue":0,"name":"hello", "gallons":0},"kegTwo":{"maxValue":0,"name":"hello", "gallons":0}}
