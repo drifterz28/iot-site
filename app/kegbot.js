@@ -6,7 +6,7 @@ module.exports = (req, res) => {
     if (err) throw err;
     if(Object.keys(query).length !== 0) {
       let json = JSON.parse(data);
-      if(['kegOne', 'kegTwo'].indexOf(query.keg) === -1 || !query.json) {
+      if(['kegOne', 'kegTwo'].indexOf(query.keg) === -1 && !query.json) {
         res.status(403).send('{"error": "invalid param"}');
         return false;
       }
