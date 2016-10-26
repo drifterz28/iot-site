@@ -1,1 +1,17 @@
-{"kegOne":{"maxValue":0,"name":"hello", "gallons":0},"kegTwo":{"maxValue":0,"name":"hello", "gallons":0}}
+{
+  "fan": 0,
+  "temp": 0,
+  "humidity": 0,
+  "kegOne": {
+      "value": 0,
+      "maxValue": 0,
+      "name": "hello",
+      "gallons": 0
+  },
+  "kegTwo": {
+      "value": 0,
+      "maxValue": 0,
+      "name": "hello",
+      "gallons": 0
+  }
+}
