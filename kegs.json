@@ -1,17 +1,17 @@
 {
-  "fan": 0,
-  "temp": 0,
-  "humidity": 0,
-  "kegOne": {
-      "value": 0,
-      "maxValue": 0,
-      "name": "hello",
-      "gallons": 0
+  "fan":1,
+  "temp":46.4,
+  "humidity":24.5,
+  "kegOne":{
+    "maxValue":"811.48",
+    "name":"Hibiscus Lavendar Kombucha",
+    "gallons":"5",
+    "value":681.95
   },
-  "kegTwo": {
-      "value": 0,
-      "maxValue": 0,
-      "name": "hello",
-      "gallons": 0
+  "kegTwo":{
+    "maxValue":"930.5",
+    "name":"Crux Gimme Mo IPA",
+    "gallons":"5",
+    "value":936.95
   }
 }
