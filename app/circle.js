@@ -3,7 +3,7 @@ const _ = require('lodash');
 const requestUrl = 'https://circleci.com/api/v1.1/project/github/goldstar/goldstar?';
 const ciToken = 'circle-token=4d88be7da3423ea99111cc549fd402ef680ff6b2&limit=';
 const limit = 30;
-const d = new.Date();
+const d = new Date();
 const day = d.getDay();
 const hours = d.getHours();
 
