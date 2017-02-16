@@ -1,12 +1,11 @@
 const fs = require('fs');
 const env = process.env;
 const express = require('express');
-const request = require('request');
-const cheerio = require('cheerio');
 const app = express();
 
 const skiConditions = require('./app/ski-conditions');
 const kegBot = require('./app/kegbot');
+const circle = require('./app/circle');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -26,6 +25,10 @@ app.get('/conditions', function(req, res) {
 
 app.get('/kegbot', function(req, res) {
   kegBot(req, res);
+});
+
+app.get('/circle', function(req, res) {
+  circle(res);
 });
 
 app.listen(env.NODE_PORT || 8888, env.NODE_IP || 'localhost')
