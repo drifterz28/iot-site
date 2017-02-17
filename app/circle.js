@@ -40,7 +40,7 @@ module.exports = (res) => {
       });
       if(!buildStatus || badStatus.indexOf(buildStatus.status) > 0) {
         buildStatus = _.find(json, (build) => {
-          return badStatus.indexOf(build.status) === -1;
+          return badStatus.indexOf(build.status) === -1 && build.branch === 'master';
         });
       }
       if(isOffHours || isWeekEnd) {
