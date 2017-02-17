@@ -22,7 +22,7 @@ module.exports = (res) => {
         //buildStatus.status = 'off';
       }
       res.setHeader('Content-Type', 'application/json');
-      res.send(`{"status": "${buildStatus.status}"`);
+      res.send(`{"status": "${buildStatus.status}"}`);
     }
   });
 };
