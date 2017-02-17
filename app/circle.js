@@ -10,9 +10,12 @@ const hours = d.getHours();
 module.exports = (res) => {
   request({url: requestUrl + ciToken + limit, json: true}, function(error, response, json) {
     if(!error) {
-      const buildStatus = _.find(json, (build) => {
+      let buildStatus = _.find(json, (build) => {
         return build.user.login === 'drifterz28';
       });
+      if(!buildStatus) {
+        buildStatus = json[0];
+      }
       res.setHeader('Content-Type', 'application/json');
       res.send(`{"status": "${buildStatus.status}", "dayOfTheWeek": "${day}", "hoursOfDay": "${hours}"}`);
     }
