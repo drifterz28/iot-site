@@ -15,7 +15,7 @@ module.exports = (res) => {
       let buildStatus = _.find(json, (build) => {
         return build.user.login === 'drifterz28';
       });
-      if(!buildStatus) {
+      if(!buildStatus || buildStatus.status === 'canceled' || buildStatus.status === 'not_run') {
         buildStatus = json[0];
       }
       if(isOffHours || isWeekEnd) {
