@@ -19,7 +19,7 @@ module.exports = (res) => {
         buildStatus = json[0];
       }
       if(isOffHours || isWeekEnd) {
-        buildStatus.status = 'off';
+        //buildStatus.status = 'off';
       }
       res.setHeader('Content-Type', 'application/json');
       res.send(`{"status": "${buildStatus.status}", "dayOfTheWeek": "${day}", "hoursOfDay": "${hours}"}`);
