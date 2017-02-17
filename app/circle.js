@@ -22,7 +22,7 @@ module.exports = (res) => {
         //buildStatus.status = 'off';
       }
       res.setHeader('Content-Type', 'application/json');
-      res.send(`{"status": "${buildStatus.status}", "dayOfTheWeek": "${day}", "hoursOfDay": "${hours}"}`);
+      res.send(`{"status": "${buildStatus.status}"`);
     }
   });
 };
