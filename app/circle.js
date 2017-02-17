@@ -46,7 +46,7 @@ module.exports = (res) => {
       if(isOffHours || isWeekEnd) {
         buildStatus.status = 'off';
       }
-      const color = Object.assign(colorDefault, colors[buildStatus.status]);
+      const color = Object.assign({r:'000',g:'000',b:'000'}, colors[buildStatus.status]);
       let jsonOut = {
         status: buildStatus.status,
         time: d,
