@@ -49,8 +49,9 @@ module.exports = (res) => {
       }
       const color = Object.assign({r:'000',g:'000',b:'000'}, colors[buildStatus.status]);
       let jsonOut = {
-        status: buildStatus.status,
-        time: d,
+        s: buildStatus.status,
+        t: d,
+        n: buildStatus.committer_name
       }
       jsonOut = Object.assign(jsonOut, color);
       res.setHeader('Content-Type', 'application/json');
