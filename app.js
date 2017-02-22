@@ -3,6 +3,13 @@ const env = process.env;
 const express = require('express');
 const app = express();
 
+// const options = {
+//   key: fs.readFileSync('server.key'),
+//   cert: fs.readFileSync('server.crt'),
+//   requestCert: false,
+//   rejectUnauthorized: false
+// };
+
 const skiConditions = require('./app/ski-conditions');
 const kegBot = require('./app/kegbot');
 const circle = require('./app/circle');

@@ -14,6 +14,7 @@ const colors = {
   fixed: {g: '240'},
   success: {g: '240'},
   failed: {r: '240'},
+  timedout: {r: '240'},
   running: {b: '240'},
   scheduled: {
     b: '211',
