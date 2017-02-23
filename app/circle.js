@@ -37,7 +37,7 @@ module.exports = (res) => {
   request({url: requestUrl + ciToken + limit, json: true}, function(error, response, json) {
     if(!error) {
       let buildStatus = _.find(json, (build) => {
-        return build.user.login === 'drifterz28';
+        return build.user.login === 'drifterz28' && badStatus.indexOf(build.status) === -1;
       });
       if(!buildStatus || badStatus.indexOf(buildStatus.status) > 0) {
         buildStatus = _.find(json, (build) => {
