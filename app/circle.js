@@ -16,6 +16,10 @@ const colors = {
   failed: {r: '240'},
   timedout: {r: '240'},
   running: {b: '240'},
+  queued: {
+    b: '211',
+    r: '148'
+  },
   scheduled: {
     b: '211',
     r: '148'
