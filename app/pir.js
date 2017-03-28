@@ -19,7 +19,7 @@ const getGreenToRed = (percent) => {
 const diffToPrecentage = (db) => {
   const diff = maxDb - minDb;
   const scale = 75 / 100;
-  const value = db - diff;
+  const value = diff - db;
   return value / .75;
 };
 
