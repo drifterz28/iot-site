@@ -16,6 +16,13 @@ const getGreenToRed = (percent) => {
   return {r, g, b: 0};
 };
 
+const diffToPrecentage = (db) => {
+  const diff = maxDb - minDb;
+  const scale = 75 / 100;
+  const value = db - diff;
+  return value / .75;
+};
+
 module.exports = (res) => {
 
   const download = (url, dest, cb) => {
@@ -46,7 +53,7 @@ module.exports = (res) => {
         Tesseract.recognize(image.path).then(result => {
           res.setHeader('Content-Type', 'application/json');
           const db = +result.text.replace(/[^\d.-]/g,'');
-          const rgb = getGreenToRed(db);
+          const rgb = getGreenToRed(diffToPrecentage(db));
           let data = Object.assign({}, {db}, rgb);
 
           res.send(JSON.stringify(data));
