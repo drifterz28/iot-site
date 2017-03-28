@@ -31,7 +31,9 @@
     "redux": "^3.5.1",
     "redux-thunk": "^2.0.1",
     "request": "^2.75.0",
-    "socket.io": "^1.4.8"
+    "socket.io": "^1.4.8",
+    "easyimage": "^2.1.0",
+    "tesseract.js": "^1.0.10"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

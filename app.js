@@ -3,16 +3,10 @@ const env = process.env;
 const express = require('express');
 const app = express();
 
-// const options = {
-//   key: fs.readFileSync('server.key'),
-//   cert: fs.readFileSync('server.crt'),
-//   requestCert: false,
-//   rejectUnauthorized: false
-// };
-
 const skiConditions = require('./app/ski-conditions');
 const kegBot = require('./app/kegbot');
 const circle = require('./app/circle');
+const pir = require('./app/pir');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -36,6 +30,10 @@ app.get('/kegbot', function(req, res) {
 
 app.get('/circle', function(req, res) {
   circle(res);
+});
+
+app.get('/pir', function(req, res) {
+  pir(res);
 });
 
 app.listen(env.NODE_PORT || 8888, env.NODE_IP || 'localhost')
