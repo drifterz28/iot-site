@@ -3,9 +3,12 @@ const fs = require('fs');
 const path = require('path');
 const Tesseract = require('tesseract.js');
 const easyimg = require('easyimage');
+
 const maxDb = 120;
 const minDb = 45;
 const image = 'http://67.42.239.10/display/guest?screenshot';
+const backupImage = 'http://65.102.14.205/display/guest?screenshot';
+
 const imageDir = '../static/';
 const imageSave = path.resolve(__dirname, imageDir + 'full.png');
 const imageCrop = path.resolve(__dirname, imageDir + 'crop.png');
@@ -25,15 +28,23 @@ const diffToPrecentage = (db) => {
 
 module.exports = (res) => {
 
-  const download = (url, dest, cb) => {
+  const download = (url, dest, cb, usedBackup = false) => {
     const file = fs.createWriteStream(dest);
     const request = http.get(url, (response) => {
+      if(response.statusCode !== 200) {
+        if(usedBackup) {
+          crop();
+          return;
+        }
+        download(backupImage, imageSave, crop, true);
+        return;
+      }
       response.pipe(file);
       file.on('finish', () => {
         file.close(cb);  // close() is async, call cb after close completes.
       });
     }).on('error', (err) => { // Handle errors
-      fs.unlink(dest); // Delete the file async. (But we don't check the result)
+      fs.unlink(dest); // Delete the file async. (But don't check the result)
       if (cb) cb(err.message);
     });
   };
