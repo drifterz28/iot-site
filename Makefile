@@ -1,0 +1,2 @@
+debug:
+	rhc tail iot

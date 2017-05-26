@@ -12,6 +12,7 @@ const backupImage = 'http://65.102.14.205/display/guest?screenshot';
 const imageDir = '../static/';
 const imageSave = path.resolve(__dirname, imageDir + 'full.png');
 const imageCrop = path.resolve(__dirname, imageDir + 'crop.png');
+const imageSaveBackup = path.resolve(__dirname, imageDir + 'full-backup.png');
 
 const getGreenToRed = (percent) => {
   const g = percent < 50 ? 255 : Math.floor(255 - (percent * 2 - 100) * 255 / 100);
@@ -33,7 +34,8 @@ module.exports = (res) => {
     const request = http.get(url, (response) => {
       if(response.statusCode !== 200) {
         if(usedBackup) {
-          crop();
+          console.log('backup used', usedBackup);
+          crop(usedBackup);
           return;
         }
         download(backupImage, imageSave, crop, true);
@@ -44,14 +46,16 @@ module.exports = (res) => {
         file.close(cb);  // close() is async, call cb after close completes.
       });
     }).on('error', (err) => { // Handle errors
-      fs.unlink(dest); // Delete the file async. (But don't check the result)
-      if (cb) cb(err.message);
+      console.log(err);
+      // fs.unlink(dest); // Delete the file async. (But don't check the result)
+      // if (cb) cb(err.message);
     });
   };
 
-  const crop = () => {
+  const crop = (usedBackup = false) => {
+    const image = usedBackup ? imageSaveBackup : imageSave;
     easyimg.rescrop({
-         src: imageSave,
+         src: image,
          dst: imageCrop,
          width:500,
          height:500,
@@ -64,7 +68,15 @@ module.exports = (res) => {
         Tesseract.recognize(image.path).then(result => {
           res.setHeader('Content-Type', 'application/json');
           const db = +result.text.replace(/[^\d.-]/g,'');
-          const rgb = getGreenToRed(diffToPrecentage(db));
+          console.log(db)
+          let rgb = getGreenToRed(diffToPrecentage(db));
+          if(db === 0) {
+            rgb = {
+              r: 0,
+              g: 0,
+              b: 100
+            };
+          }
           let data = Object.assign({}, {db}, rgb);
 
           res.send(JSON.stringify(data));
