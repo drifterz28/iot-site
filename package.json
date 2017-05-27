@@ -5,8 +5,8 @@
   "private": true,
   "main": "start.js",
   "scripts": {
-    "start": "node --use_strict start.js",
-    "dev": "nodemon --use_strict start.js"
+    "start": "node start.js",
+    "dev": "nodemon start.js"
   },
   "author": "",
   "license": "ISC",
