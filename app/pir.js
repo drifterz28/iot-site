@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const Tesseract = require('tesseract.js');
 const easyimg = require('easyimage');
+const moment = require('moment');
 
 const maxDb = 120;
 const minDb = 45;
@@ -27,43 +28,53 @@ const diffToPrecentage = (db) => {
   return value / .75;
 };
 
+const imageTimeCheck = () => {
+  fs.stat(imageSave, (err, data) => {
+    if (err) throw err;
+    const then = moment(data.mtime, `YYYY-MM-DD'T'HH:mm:ss:SSSZ`);
+    const now = moment();
+
+    const diff = Math.abs(moment.duration(then.diff(now)));
+    const diffInMin = moment.utc(diff).format('mm');
+    if(diffInMin > 5) {
+      download(image, imageSave);
+    }
+  });
+};
+
+const download = (url, dest, usedBackup = false) => {
+  const file = fs.createWriteStream(dest);
+  const request = http.get(url, (response) => {
+    if(response.statusCode !== 200) {
+      if(usedBackup) {
+        download(imageSaveBackup, imageSave, crop, true);
+      }
+      download(backupImage, imageSave, true);
+      return;
+    }
+    response.pipe(file);
+    file.on('finish', () => {
+      file.close();
+    });
+  }).on('error', (err) => {
+    console.log(err);
+  });
+};
+
 module.exports = (res) => {
 
-  const download = (url, dest, cb, usedBackup = false) => {
-    const file = fs.createWriteStream(dest);
-    const request = http.get(url, (response) => {
-      if(response.statusCode !== 200) {
-        if(usedBackup) {
-          console.log('backup used', usedBackup);
-          crop(usedBackup);
-          return;
-        }
-        download(backupImage, imageSave, crop, true);
-        return;
-      }
-      response.pipe(file);
-      file.on('finish', () => {
-        file.close(cb);  // close() is async, call cb after close completes.
-      });
-    }).on('error', (err) => { // Handle errors
-      console.log(err);
-      // fs.unlink(dest); // Delete the file async. (But don't check the result)
-      // if (cb) cb(err.message);
-    });
-  };
-
-  const crop = (usedBackup = false) => {
-    const image = usedBackup ? imageSaveBackup : imageSave;
+  const crop = () => {
     easyimg.rescrop({
-         src: image,
-         dst: imageCrop,
-         width:500,
-         height:500,
-         cropwidth:300,
-         cropheight:150,
-         x:0,
-         y:50
-      }).then(
+      src: imageSave,
+      dst: imageCrop,
+      width:500,
+      height:500,
+      cropwidth:300,
+      cropheight:150,
+      x:0,
+      y:50
+    })
+    .then(
       (image) => {
         Tesseract.recognize(image.path).then(result => {
           res.setHeader('Content-Type', 'application/json');
@@ -85,8 +96,9 @@ module.exports = (res) => {
       (err) => {
         console.log(err);
       }
-    );
+    )
+    .then(imageTimeCheck);
   };
 
-  download(image, imageSave, crop);
+  crop();
 };
