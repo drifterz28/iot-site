@@ -79,7 +79,6 @@ module.exports = (res) => {
         Tesseract.recognize(image.path).then(result => {
           res.setHeader('Content-Type', 'application/json');
           const db = +result.text.replace(/[^\d.-]/g,'');
-          console.log(db)
           let rgb = getGreenToRed(diffToPrecentage(db));
           if(db === 0) {
             rgb = {
@@ -89,7 +88,6 @@ module.exports = (res) => {
             };
           }
           let data = Object.assign({}, {db}, rgb);
-
           res.send(JSON.stringify(data));
         });
       },

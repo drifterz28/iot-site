@@ -7,6 +7,8 @@ const skiConditions = require('./app/ski-conditions');
 const kegBot = require('./app/kegbot');
 const circle = require('./app/circle');
 const pir = require('./app/pir');
+const sprinkler = require('./app/sprinkler');
+const date = require('./app/date');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -34,6 +36,14 @@ app.get('/circle', function(req, res) {
 
 app.get('/pir', function(req, res) {
   pir(res);
+});
+
+app.get('/sprinkler', function(req, res) {
+  sprinkler(req, res);
+});
+
+app.get('/date', function(req, res) {
+  date(res);
 });
 
 app.listen(env.NODE_PORT || 8888, env.NODE_IP || 'localhost')
