@@ -9,6 +9,7 @@ const circle = require('./app/circle');
 const pir = require('./app/pir');
 const sprinkler = require('./app/sprinkler');
 const date = require('./app/date');
+const crypto = require('./app/crypto');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -44,6 +45,10 @@ app.get('/sprinkler', function(req, res) {
 
 app.get('/date', function(req, res) {
   date(res);
+});
+
+app.get('/crypto', function(req, res) {
+  crypto(req, res);
 });
 
 app.listen(env.NODE_PORT || 8888, env.NODE_IP || 'localhost')
