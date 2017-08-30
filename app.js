@@ -10,8 +10,9 @@ const pir = require('./app/pir');
 const sprinkler = require('./app/sprinkler');
 const date = require('./app/date');
 const crypto = require('./app/crypto');
+const test = require('./app/test');
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -19,38 +20,42 @@ app.use(function(req, res, next) {
 
 app.use(express.static('static'));
 
-app.get('/health', function(req, res) {
+app.get('/health', (req, res) => {
   res.send('good');
 });
 
-app.get('/conditions', function(req, res) {
+app.get('/conditions', (req, res) => {
   skiConditions(res);
 });
 
-app.get('/kegbot', function(req, res) {
+app.get('/kegbot', (req, res) => {
   kegBot(req, res);
 });
 
-app.get('/circle', function(req, res) {
+app.get('/circle', (req, res) => {
   circle(res);
 });
 
-app.get('/pir', function(req, res) {
+app.get('/pir', (req, res) => {
   pir(res);
 });
 
-app.get('/sprinkler', function(req, res) {
+app.get('/sprinkler', (req, res) => {
   sprinkler(req, res);
 });
 
-app.get('/date', function(req, res) {
+app.get('/date', (req, res) => {
   date(res);
 });
 
-app.get('/crypto', function(req, res) {
+app.get('/crypto', (req, res) => {
   crypto(req, res);
 });
 
-app.listen(env.NODE_PORT || 8888, env.NODE_IP || 'localhost')
-console.log('Magic happens on port 8888');
+app.get('/test', (req, res) => {
+  test(req, res);
+});
+
+app.listen(env.NODE_PORT || 8080, env.NODE_IP || 'localhost')
+console.log('Magic happens on port 8080');
 exports = module.exports = app;
