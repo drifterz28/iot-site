@@ -48,6 +48,11 @@ const money = (num) => {
 }
 
 module.exports = (req, res) => {
+  const query = req.query;
+  let currencyIndex = +query.currency;
+  if (isNaN(currencyIndex) || currencyIndex > 2) {
+    currencyIndex = 0;
+  }
   const currentCurrency = currency[currencyIndex];
   const url = `https://www.coinbase.com/api/v2/prices/${currentCurrency.currencyPair}/historic?period=day`;
   request({url: url, json: true}, (error, response, json) => {
@@ -65,11 +70,6 @@ module.exports = (req, res) => {
         priceChange: money(priceDiff / 100),
         percentChange: precentage
       };
-
-      currencyIndex++;
-      if(currencyIndex >= currency.length) {
-        currencyIndex = 0;
-      }
 
       res.setHeader('Content-Type', 'application/json');
       res.send(JSON.stringify(displayData));
