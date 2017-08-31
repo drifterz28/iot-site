@@ -25,8 +25,27 @@ const priceChange = (amount, lastPrice) => {
 
 const precentChange = (amount, diff) => {
   const percentage = (diff / amount) * 100;
-  return `${percentage.toPrecision(3)}%`;
+  return `${percentage.toPrecision(2)}%`;
 };
+
+const money = (num) => {
+  const p = String(num).split('.');
+  const neg = '';
+  const currencySymbol = '$';
+  if (p[0][0] === '-') {
+    p[0] = p[0].substr(1);
+    neg = '-';
+  }
+  if (!p[1]) {
+    p[1] = '00';
+  } else if (p[1].length === 1) {
+    p[1] = String(p[1]+ '0');
+  } else {
+    //lol at javascript math
+    p[1] = String(p[1]).substr(0, 2);
+  }
+  return neg + currencySymbol + p[0] + '.' + p[1];
+}
 
 module.exports = (req, res) => {
   const currentCurrency = currency[currencyIndex];
@@ -41,9 +60,9 @@ module.exports = (req, res) => {
       const precentage = precentChange(currentPrice, priceDiff);
       let displayData = {
         name: currentCurrency.name,
-        price: `$${currentPrice / 100}`,
-        lastPrice: `$${lastPrice / 100}`,
-        priceChange: `$${priceDiff / 100}`,
+        price: money(currentPrice / 100),
+        lastPrice: money(lastPrice / 100),
+        priceChange: money(priceDiff / 100),
         percentChange: precentage
       };
 
