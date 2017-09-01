@@ -68,7 +68,8 @@ module.exports = (req, res) => {
         price: money(currentPrice / 100),
         lastPrice: money(lastPrice / 100),
         priceChange: money(priceDiff / 100),
-        percentChange: precentage
+        percentChange: precentage,
+        direction: (priceDiff / 100 > 0) ? 'up' : 'down'
       };
 
       res.setHeader('Content-Type', 'application/json');
