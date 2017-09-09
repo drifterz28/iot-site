@@ -34,6 +34,7 @@
     "react-redux": "^4.4.8",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "request": "^2.75.0",
     "socket.io": "^1.7.4",
     "tesseract.js": "^1.0.10"
   },
@@ -55,7 +56,6 @@
     "node-sass": "^3.13.1",
     "nodemon": "^1.11.0",
     "postcss-loader": "^0.8.2",
-    "request": "^2.81.0",
     "sass-loader": "^4.1.1",
     "serialize-javascript": "^1.4.0",
     "style-loader": "^0.13.2",
