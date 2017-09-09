@@ -30,7 +30,7 @@ const precentChange = (amount, diff) => {
 
 const money = (num) => {
   const p = String(num).split('.');
-  const neg = '';
+  let neg = '';
   const currencySymbol = '$';
   if (p[0][0] === '-') {
     p[0] = p[0].substr(1);
