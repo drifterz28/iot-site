@@ -4,10 +4,10 @@
   "description": "Custom Node.js cartridge for OpenShift - sample application",
   "private": true,
   "engine": "node 8.4.0",
-  "main": "start.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node start.js",
-    "dev": "./node_modules/nodemon/bin/nodemon.js start.js"
+    "start": "node app.js",
+    "dev": "./node_modules/nodemon/bin/nodemon.js app.js"
   },
   "author": "",
   "license": "ISC",

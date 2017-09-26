@@ -1,5 +1,2 @@
-debug:
-	rhc tail iot
-
-db:
-	rhc port-forward
+logs:
+	heroku logs --tail

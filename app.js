@@ -12,6 +12,8 @@ const date = require('./app/date');
 const crypto = require('./app/crypto');
 const test = require('./app/test');
 
+app.set('port', (process.env.PORT || 5000));
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -56,6 +58,6 @@ app.get('/test', (req, res) => {
   test(req, res);
 });
 
-app.listen(env.NODE_PORT || 8080, env.NODE_IP || 'localhost')
-console.log('Magic happens on port 8080');
-exports = module.exports = app;
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
