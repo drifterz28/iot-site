@@ -45,6 +45,7 @@
     "morgan": "^1.8.2",
     "node-sass": "^3.13.1",
     "nodemon": "^1.12.1",
+    "pg": "7.3.0",
     "postcss-loader": "^0.8.2",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
