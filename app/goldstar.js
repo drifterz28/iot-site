@@ -15,9 +15,10 @@ const listingsAdapter = (listing) => {
 module.exports = (req, res) => {
   const query = req.query;
   const url = `https://www.goldstar.com/${query.location}.hal`;
+  const max = +query.max || 20;
   request({url: url, json: true}, (error, response, json) => {
     if(!error) {
-      const listings = json._embedded.listings.slice(0, 10);
+      const listings = json._embedded.listings.slice(0, max);
       const cleanListings = listings.map(listing => listingsAdapter(listing));
       res.setHeader('Content-Type', 'application/json');
       res.send(JSON.stringify(cleanListings));
