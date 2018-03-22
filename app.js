@@ -11,6 +11,7 @@ const sprinkler = require('./app/sprinkler');
 const date = require('./app/date');
 const crypto = require('./app/crypto');
 const test = require('./app/test');
+const goldstar = require('./app/goldstar');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -24,6 +25,10 @@ app.use(express.static('static'));
 
 app.get('/health', (req, res) => {
   res.send('good');
+});
+
+app.get('/goldstar', (req, res) => {
+  goldstar(req, res);
 });
 
 app.get('/conditions', (req, res) => {
