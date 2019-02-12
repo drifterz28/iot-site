@@ -3,7 +3,9 @@
   "version": "1.0.1",
   "description": "Custom Node.js cartridge for OpenShift - sample application",
   "private": true,
-  "engine": "node 10.15.0",
+  "engines": {
+    "node": "10.15.0"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
