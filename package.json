@@ -1,1 +1,67 @@
-{"name":"openshift-cartridge-nodejs-template","version":"1.0.1","description":"Custom Node.js cartridge for OpenShift - sample application","private":true,"engines":{"node":"10.15.0"},"main":"app.js","scripts":{"start":"node app.js","dev":"./node_modules/nodemon/bin/nodemon.js app.js","update:packages":"node wipe.js && rm -rf node_modules && npm update --save-dev && npm update --save"},"author":"","license":"ISC","babel":{"presets":["es2015","react","stage-0"]},"dependencies":{"assert":"*","autoprefixer":"*","babel-cli":"*","babel-core":"*","babel-loader":"*","babel-preset-env":"*","babel-preset-react":"*","babel-preset-stage-0":"*","babel-preset-stage-1":"*","babel-register":"*","body-parser":"*","cheerio":"*","css-loader":"*","css-modules-require-hook":"*","easyimage":"*","express":"*","extract-text-webpack-plugin":"*","isomorphic-fetch":"*","jsonwebtoken":"*","lodash":"*","marked":"*","moment":"*","mongoose":"*","morgan":"*","node-sass":"*","nodemon":"*","pg":"*","postcss-loader":"*","react":"*","react-dom":"*","react-redux":"*","redux":"*","redux-thunk":"*","request":"*","sass-loader":"*","serialize-javascript":"*","socket.io":"*","style-loader":"*","tesseract.js":"*","webpack":"*","webpack-dev-middleware":"*"}}
+{
+  "name": "openshift-cartridge-nodejs-template",
+  "version": "1.0.1",
+  "description": "Custom Node.js cartridge for OpenShift - sample application",
+  "private": true,
+  "engines": {
+    "node": "10.15.0"
+  },
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "./node_modules/nodemon/bin/nodemon.js app.js",
+    "update:packages": "node wipe.js && rm -rf node_modules && npm update --save-dev && npm update --save"
+  },
+  "author": "",
+  "license": "ISC",
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ]
+  },
+  "dependencies": {
+    "assert": "*",
+    "autoprefixer": "*",
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-env": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-0": "*",
+    "babel-preset-stage-1": "*",
+    "babel-register": "*",
+    "body-parser": "*",
+    "cheerio": "*",
+    "css-loader": "*",
+    "css-modules-require-hook": "*",
+    "easyimage": "*",
+    "express": "*",
+    "extract-text-webpack-plugin": "*",
+    "isomorphic-fetch": "*",
+    "jsonwebtoken": "*",
+    "lodash": "*",
+    "marked": "*",
+    "moment": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "node-sass": "*",
+    "nodemon": "*",
+    "pg": "*",
+    "postcss-loader": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-redux": "*",
+    "redux": "*",
+    "redux-thunk": "*",
+    "request": "*",
+    "sass-loader": "*",
+    "serialize-javascript": "*",
+    "socket.io": "*",
+    "style-loader": "*",
+    "tesseract.js": "*",
+    "webpack": "*",
+    "webpack-dev-middleware": "*"
+  }
+}
