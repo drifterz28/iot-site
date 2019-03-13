@@ -8,9 +8,14 @@
   },
   "main": "app.js",
   "scripts": {
+    "dev-test": "parcel <your entry file>",
+    "build": "parcel build src/index.html",
     "start": "node app.js",
     "dev": "./node_modules/nodemon/bin/nodemon.js app.js",
     "update:packages": "node wipe.js && rm -rf node_modules && npm update --save-dev && npm update --save"
+  },
+  "nodemonConfig": {
+    "ignore": ["src/*", "dist/*", ".cache/*"]
   },
   "author": "",
   "license": "ISC",
@@ -60,8 +65,9 @@
     "serialize-javascript": "*",
     "socket.io": "*",
     "style-loader": "*",
-    "tesseract.js": "*",
-    "webpack": "*",
-    "webpack-dev-middleware": "*"
+    "tesseract.js": "*"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.1"
   }
 }
