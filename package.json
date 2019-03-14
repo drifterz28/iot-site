@@ -65,9 +65,7 @@
     "serialize-javascript": "*",
     "socket.io": "*",
     "style-loader": "*",
-    "tesseract.js": "*"
-  },
-  "devDependencies": {
+    "tesseract.js": "*",
     "parcel-bundler": "^1.12.1"
   }
 }
