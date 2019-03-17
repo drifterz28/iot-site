@@ -8,14 +8,17 @@
   },
   "main": "app.js",
   "scripts": {
-    "dev-test": "parcel <your entry file>",
     "build": "parcel build src/index.html",
     "start": "node app.js",
     "dev": "./node_modules/nodemon/bin/nodemon.js app.js",
     "update:packages": "node wipe.js && rm -rf node_modules && npm update --save-dev && npm update --save"
   },
   "nodemonConfig": {
-    "ignore": ["src/*", "dist/*", ".cache/*"]
+    "ignore": [
+      "src/*",
+      "dist/*",
+      ".cache/*"
+    ]
   },
   "author": "",
   "license": "ISC",
@@ -53,19 +56,20 @@
     "morgan": "*",
     "node-sass": "*",
     "nodemon": "*",
+    "parcel-bundler": "^1.12.1",
     "pg": "*",
     "postcss-loader": "*",
-    "react": "*",
+    "react": "^16.4.0",
     "react-dom": "*",
-    "react-redux": "*",
-    "redux": "*",
+    "react-redux": "^6.0.0",
+    "redux": "^3.0.0 || ^4.0.0",
+    "redux-form": "^8.1.0",
     "redux-thunk": "*",
     "request": "*",
     "sass-loader": "*",
     "serialize-javascript": "*",
     "socket.io": "*",
     "style-loader": "*",
-    "tesseract.js": "*",
-    "parcel-bundler": "^1.12.1"
+    "tesseract.js": "*"
   }
 }

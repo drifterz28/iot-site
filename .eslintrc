@@ -1,0 +1,56 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "quote-props": [2, "as-needed"],
+    "keyword-spacing": "error",
+    "arrow-spacing": "error",
+    "no-console": "error",
+    "no-var": "error",
+    "quotes": [
+      2,
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "semi": [2, "always"],
+    "prefer-const": 2,
+    "prefer-template": 2,
+    "jsx-quotes": [2, "prefer-single"],
+    "yoda": 2,
+    "no-restricted-globals": [
+      "error",
+      {
+        "name": "find",
+        "message": "You probably meant to use find from lodash instead."
+      }
+    ],
+    "arrow-body-style": 2,
+    "react/no-deprecated": 2,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-direct-mutation-state": 2,
+    "react/no-multi-comp": [2, { "ignoreStateless": true }],
+    "react/no-string-refs": 2,
+    "react/no-unknown-property": 1,
+    "react/no-unused-prop-types": 2,
+    "react/prefer-es6-class": 2,
+    "react/prefer-stateless-function": 1,
+    "react/prop-types": 2,
+    "react/react-in-jsx-scope": 2,
+    "react/require-render-return": 2,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/sort-prop-types": ["error", { "ignoreCase": true }],
+    "react/jsx-boolean-value": 1,
+    "react/jsx-curly-spacing": 1,
+    "react/jsx-equals-spacing": 1,
+    "react/jsx-key": 2,
+    "react/jsx-no-bind": [1, { "allowArrowFunctions": true }],
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-no-undef": 2,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-unused-state": 2,
+  }
+}
