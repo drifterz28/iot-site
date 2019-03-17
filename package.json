@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "assert": "*",
-    "autoprefixer": "*",
     "babel-cli": "*",
     "babel-core": "*",
     "babel-loader": "*",
@@ -49,7 +48,6 @@
     "extract-text-webpack-plugin": "*",
     "isomorphic-fetch": "*",
     "jsonwebtoken": "*",
-    "lodash": "*",
     "marked": "*",
     "moment": "*",
     "mongoose": "*",
