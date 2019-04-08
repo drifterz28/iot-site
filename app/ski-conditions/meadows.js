@@ -4,12 +4,12 @@ const request = require('request');
 module.exports = () => {
   const url = 'https://www.skihood.com/the-mountain/conditions';
   request(url, function(error, response, html) {
-    if(!error) {
+    if (!error) {
       const $ = cheerio.load(html);
       const $data = $('.conditions-glance');
       const $current = $data.find('.conditions-current');
       const $conditions = $current.find('.conditions');
-      let json = {
+      const json = {
         conditions: {}
       };
 

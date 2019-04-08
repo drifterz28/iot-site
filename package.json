@@ -9,8 +9,8 @@
   "main": "app.js",
   "scripts": {
     "build": "parcel build src/index.html",
-    "start": "node app.js",
-    "dev": "./node_modules/nodemon/bin/nodemon.js app.js",
+    "start": "node --experimental-modules app.js",
+    "dev": "./node_modules/nodemon/bin/nodemon.js --experimental-modules app.js",
     "update:packages": "node wipe.js && rm -rf node_modules && npm update --save-dev && npm update --save"
   },
   "nodemonConfig": {
@@ -46,6 +46,7 @@
     "eslint": "^5.15.2",
     "eslint-plugin-react": "^7.12.4",
     "express": "*",
+    "googleapis": "^38.0.0",
     "isomorphic-fetch": "*",
     "jsonwebtoken": "^8.5.0",
     "marked": "^0.6.1",
